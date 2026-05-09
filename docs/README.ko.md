@@ -1,10 +1,25 @@
+<div align="center">
+  <img src="../assets/logo.png" alt="Wormhole Logo" width="256" />
+</div>
+
 # Wormhole
 
 [English](../README.md) | [中文](README.zh.md) | [日本語](README.ja.md) | **한국어**
 
-[Ratatui](https://github.com/ratatui-org/ratatui)로 구축된 암호화 비밀번호 금고가 포함된 터미널 기반 SSH 연결 관리자.
+Rust로 작성된 빠르고 안전하며 아름다운 터미널 SSH 연결 관리자.
 
-Wormhole을 사용하면 아름다운 TUI 인터페이스에서 SSH 서버를 관리하고 연결할 수 있습니다 — 호스트를 그룹화하고, 자격 증명을 안전하게 저장하며, 단일 키 입력으로 연결하세요.
+Wormhole을 사용하면 세련된 TUI 인터페이스에서 SSH 서버를 관리하고 연결할 수 있습니다 — 호스트를 그룹화하고, AES-256-GCM으로 자격 증명을 암호화하며, 단일 키 입력으로 연결하세요.
+
+## 스크린샷
+
+<div align="center">
+  <img src="../assets/login.png" alt="로그인" width="49%" />
+  <img src="../assets/host_list.png" alt="호스트 목록" width="49%" />
+</div>
+<div align="center">
+  <img src="../assets/new_group.png" alt="새 그룹" width="49%" />
+  <img src="../assets/new_host.png" alt="새 호스트" width="49%" />
+</div>
 
 ## 기능
 
@@ -18,9 +33,26 @@ Wormhole을 사용하면 아름다운 TUI 인터페이스에서 SSH 서버를 �
 
 ## 요구 사항
 
-- [Nerd Font](https://www.nerdfonts.com/)를 지원하는 터미널 (예: JetBrains Mono Nerd Font)
+- [Nerd Font](https://www.nerdfonts.com/)가 설치되어 있고 터미널 글꼴로 설정되어 있어야 함 (예: JetBrains Mono Nerd Font)
 - [sshpass](https://sourceforge.net/projects/sshpass/) (비밀번호 기반 SSH 연결용)
 - Rust 1.85+ (edition 2024)
+
+### Nerd Font 설치
+
+Wormhole 인터페이스 전체에 Nerd Font 아이콘이 사용됩니다. 아이콘이 네모나 물음표로 표시되면 Nerd Font를 설치하세요:
+
+```bash
+# macOS
+brew install --cask font-jetbrains-mono-nerd-font
+
+# Linux
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+unzip JetBrainsMono.zip && rm JetBrainsMono.zip
+fc-cache -fv
+```
+
+설치 후 터미널 설정에서 글꼴을 "JetBrainsMono Nerd Font"로 변경하세요.
 
 ## 설치
 

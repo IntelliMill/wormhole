@@ -1,10 +1,25 @@
+<div align="center">
+  <img src="../assets/logo.png" alt="Wormhole Logo" width="256" />
+</div>
+
 # Wormhole
 
 [English](../README.md) | **中文** | [日本語](README.ja.md) | [한국어](README.ko.md)
 
-基于终端的 SSH 连接管理器，内置加密密码保险库，使用 [Ratatui](https://github.com/ratatui-org/ratatui) 构建。
+一款使用 Rust 编写的高性能、安全、精美的终端 SSH 连接管理器。
 
-Wormhole 让你通过精美的 TUI 界面管理和连接 SSH 服务器——对主机进行分组、安全存储凭证，一键即可连接。
+Wormhole 让你通过精致的 TUI 界面管理和连接 SSH 服务器——对主机进行分组、使用 AES-256-GCM 加密凭证，一键即可连接。
+
+## 截图
+
+<div align="center">
+  <img src="../assets/login.png" alt="登录界面" width="49%" />
+  <img src="../assets/host_list.png" alt="主机列表" width="49%" />
+</div>
+<div align="center">
+  <img src="../assets/new_group.png" alt="新建分组" width="49%" />
+  <img src="../assets/new_host.png" alt="新建主机" width="49%" />
+</div>
 
 ## 功能特性
 
@@ -18,9 +33,26 @@ Wormhole 让你通过精美的 TUI 界面管理和连接 SSH 服务器——对�
 
 ## 系统要求
 
-- 支持 [Nerd Font](https://www.nerdfonts.com/) 的终端（如 JetBrains Mono Nerd Font）
+- 已安装 [Nerd Font](https://www.nerdfonts.com/) 并设为终端字体（如 JetBrains Mono Nerd Font）
 - [sshpass](https://sourceforge.net/projects/sshpass/)（用于基于密码的 SSH 连接）
 - Rust 1.85+（edition 2024）
+
+### 安装 Nerd Font
+
+Wormhole 界面中使用了大量 Nerd Font 图标。如果图标显示为方框或问号，请安装 Nerd Font：
+
+```bash
+# macOS
+brew install --cask font-jetbrains-mono-nerd-font
+
+# Linux
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+unzip JetBrainsMono.zip && rm JetBrainsMono.zip
+fc-cache -fv
+```
+
+安装后，在终端设置中将字体切换为 "JetBrainsMono Nerd Font"。
 
 ## 安装
 

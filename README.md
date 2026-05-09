@@ -1,10 +1,25 @@
+<div align="center">
+  <img src="assets/logo.png" alt="Wormhole Logo" width="256" />
+</div>
+
 # Wormhole
 
 **English** | [中文](docs/README.zh.md) | [日本語](docs/README.ja.md) | [한국어](docs/README.ko.md)
 
-A terminal-based SSH connection manager with an encrypted password vault, built with [Ratatui](https://github.com/ratatui-org/ratatui).
+A fast, secure, and beautiful terminal SSH connection manager written in Rust.
 
-Wormhole lets you manage and connect to your SSH servers from a beautiful TUI interface — group hosts, store credentials securely, and connect with a single keypress.
+Wormhole lets you manage and connect to your SSH servers from a stunning TUI interface — organize hosts into groups, encrypt credentials with AES-256-GCM, and connect with a single keypress.
+
+## Screenshots
+
+<div align="center">
+  <img src="assets/login.png" alt="Login" width="49%" />
+  <img src="assets/host_list.png" alt="Host List" width="49%" />
+</div>
+<div align="center">
+  <img src="assets/new_group.png" alt="New Group" width="49%" />
+  <img src="assets/new_host.png" alt="New Host" width="49%" />
+</div>
 
 ## Features
 
@@ -18,9 +33,26 @@ Wormhole lets you manage and connect to your SSH servers from a beautiful TUI in
 
 ## Requirements
 
-- A terminal with [Nerd Font](https://www.nerdfonts.com/) support (e.g. JetBrains Mono Nerd Font)
+- A [Nerd Font](https://www.nerdfonts.com/) installed and set as your terminal font (e.g. JetBrains Mono Nerd Font)
 - [sshpass](https://sourceforge.net/projects/sshpass/) (for password-based SSH connections)
 - Rust 1.85+ (edition 2024)
+
+### Installing a Nerd Font
+
+Wormhole uses Nerd Font icons throughout the interface. If icons appear as boxes or question marks, install a Nerd Font:
+
+```bash
+# macOS
+brew install --cask font-jetbrains-mono-nerd-font
+
+# Linux
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+unzip JetBrainsMono.zip && rm JetBrainsMono.zip
+fc-cache -fv
+```
+
+Then set "JetBrainsMono Nerd Font" as your terminal font.
 
 ## Installation
 
