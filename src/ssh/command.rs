@@ -43,7 +43,10 @@ pub fn exec_ssh(host: &Host, password: Option<&str>) -> Result<(), Box<dyn std::
         return Err("Empty command".into());
     }
 
-    let err = Command::new(&args[0]).args(&args[1..]).exec();
+    let err = Command::new(&args[0])
+        .args(&args[1..])
+        .env("TERM", "xterm-256color")
+        .exec();
     Err(err.into())
 }
 
