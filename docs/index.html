@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wormhole — Fast, Secure, Beautiful SSH Manager</title>
+  <meta name="description" content="A fast, secure, and beautiful terminal SSH connection manager written in Rust. Organize hosts, encrypt credentials, and connect with a single keypress." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="nav">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="assets/logo.png" alt="Wormhole" />
+        Wormhole
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link-text" data-i18n="nav_features">Features</a></li>
+        <li><a href="#screenshots" class="nav-link-text" data-i18n="nav_screenshots">Screenshots</a></li>
+        <li><a href="#quickstart" class="nav-link-text" data-i18n="nav_quickstart">Quick Start</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" id="langToggle">
+            <span class="lang-flag" id="langFlag">🇺🇸</span>
+            <span class="lang-code" id="langCode">EN</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button class="lang-option" data-lang="en">🇺🇸 English</button>
+            <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+            <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+            <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+          </div>
+        </li>
+        <li>
+          <a href="https://github.com/wormhole-ssh/wormhole" target="_blank" rel="noopener" class="nav-github">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span class="nav-link-text">GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="assets/logo.png" alt="Wormhole Logo" class="hero-logo" />
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span data-i18n="hero_badge">Terminal-native &middot; Rust-powered &middot; Blazing fast</span>
+      </div>
+      <h1 data-i18n="hero_title">Your SSH manager,<br>right in the terminal</h1>
+      <p data-i18n="hero_desc">A fully TUI-based SSH connection manager built with Rust. No browser, no Electron — just your terminal, butter-smooth and instant. Manage servers, encrypt credentials, and connect with a single keypress.</p>
+      <div class="hero-actions">
+        <a href="#quickstart" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="hero_install">Install Now</span>
+        </a>
+        <a href="https://github.com/wormhole-ssh/wormhole" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span data-i18n="hero_source">View Source</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="features_title">Everything you need, nothing you don't</h2>
+        <p data-i18n="features_desc">Powerful features designed for developers who live in the terminal</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">&#x1F512;</div>
+          <h3 data-i18n="f_vault_title">Encrypted Vault</h3>
+          <p data-i18n="f_vault_desc">AES-256-GCM encryption with Argon2id key derivation keeps your credentials safe locally.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">&#x1F4C1;</div>
+          <h3 data-i18n="f_group_title">Group Organization</h3>
+          <p data-i18n="f_group_desc">Organize hosts into collapsible groups. Drag to reorder with Shift+J/K.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">&#x1F50D;</div>
+          <h3 data-i18n="f_search_title">Instant Search</h3>
+          <p data-i18n="f_search_desc">Full-text search across host names, addresses, and groups. Find anything in milliseconds.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">&#x1F3A8;</div>
+          <h3 data-i18n="f_theme_title">4 Built-in Themes</h3>
+          <p data-i18n="f_theme_desc">Catppuccin Mocha, Tokyo Night, Dracula, Gruvbox Dark — with live preview on switch.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">&#x1F30D;</div>
+          <h3 data-i18n="f_i18n_title">Multilingual</h3>
+          <p data-i18n="f_i18n_desc">In-app language switching for English, Chinese, Japanese, and Korean.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">&#x2328;</div>
+          <h3 data-i18n="f_vim_title">Vim Keybindings</h3>
+          <p data-i18n="f_vim_desc">Navigate with j/k/h/l. Every action mapped to a single keypress. No mouse needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Screenshots ===== -->
+  <section id="screenshots" class="screenshots-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="screenshots_title">See it in action</h2>
+        <p data-i18n="screenshots_desc">A stunning TUI that makes managing SSH connections a joy</p>
+      </div>
+      <div class="carousel reveal">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="assets/login.png" alt="Login screen" loading="lazy" />
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/host_list.png" alt="Host list" loading="lazy" />
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/new_group.png" alt="New group dialog" loading="lazy" />
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/new_host.png" alt="New host form" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" id="carouselPrev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="carousel-dots" id="carouselDots">
+            <button class="carousel-dot active" data-index="0"></button>
+            <button class="carousel-dot" data-index="1"></button>
+            <button class="carousel-dot" data-index="2"></button>
+            <button class="carousel-dot" data-index="3"></button>
+          </div>
+          <button class="carousel-btn carousel-next" id="carouselNext">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <img id="lightboxImg" src="" alt="" />
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quick Start ===== -->
+  <section id="quickstart">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="qs_title">Up and running in 30 seconds</h2>
+        <p data-i18n="qs_desc">Clone, build, and connect to your first server</p>
+      </div>
+      <div class="quickstart-grid">
+        <div class="install-steps">
+          <div class="step reveal reveal-delay-1">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h4 data-i18n="step1_title">Install a Nerd Font</h4>
+              <p data-i18n="step1_desc">Required for icons. E.g. <code>brew install --cask font-jetbrains-mono-nerd-font</code></p>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h4 data-i18n="step2_title">Clone &amp; Build</h4>
+              <p data-i18n="step2_desc">Requires Rust 1.85+. Build with <code>cargo build --release</code></p>
+            </div>
+          </div>
+          <div class="step reveal reveal-delay-3">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h4 data-i18n="step3_title">Run Wormhole</h4>
+              <p data-i18n="step3_desc">Execute <code>wormhole</code> in your terminal. Set a master password or skip it.</p>
+            </div>
+          </div>
+
+          <div class="code-block reveal reveal-delay-4">
+            <div class="code-block-header">
+              <span class="code-block-lang">bash</span>
+              <button class="code-block-copy" data-i18n="copy">Copy</button>
+            </div>
+            <pre><span class="comment" data-i18n="code_clone_comment"># Clone the repository</span>
+<span class="prompt">$ </span><span class="command">git clone https://github.com/wormhole-ssh/wormhole.git</span>
+<span class="prompt">$ </span><span class="command">cd wormhole</span>
+
+<span class="comment" data-i18n="code_build_comment"># Build from source</span>
+<span class="prompt">$ </span><span class="command">cargo build --release</span>
+
+<span class="comment" data-i18n="code_install_comment"># Install to PATH</span>
+<span class="prompt">$ </span><span class="command">cp target/release/wormhole /usr/local/bin/</span>
+
+<span class="comment" data-i18n="code_launch_comment"># Launch!</span>
+<span class="prompt">$ </span><span class="command">wormhole</span></pre>
+          </div>
+        </div>
+
+        <div class="keybindings reveal reveal-delay-2">
+          <div class="keybindings-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.001M10 8h.001M14 8h.001M18 8h.001M8 12h.001M12 12h.001M16 12h.001M7 16h10"/></svg>
+            <span data-i18n="kb_title">Keyboard Shortcuts</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th data-i18n="kb_key">Key</th><th data-i18n="kb_action">Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><kbd>j</kbd> / <kbd>&darr;</kbd></td><td data-i18n="kb_down">Move down</td></tr>
+              <tr><td><kbd>k</kbd> / <kbd>&uarr;</kbd></td><td data-i18n="kb_up">Move up</td></tr>
+              <tr><td><kbd>h</kbd> / <kbd>l</kbd></td><td data-i18n="kb_panel">Switch panel</td></tr>
+              <tr><td><kbd>Enter</kbd></td><td data-i18n="kb_connect">Connect to host</td></tr>
+              <tr><td><kbd>n</kbd></td><td data-i18n="kb_newhost">New host</td></tr>
+              <tr><td><kbd>g</kbd></td><td data-i18n="kb_newgroup">New group</td></tr>
+              <tr><td><kbd>e</kbd></td><td data-i18n="kb_edit">Edit selected</td></tr>
+              <tr><td><kbd>d</kbd></td><td data-i18n="kb_delete">Delete selected</td></tr>
+              <tr><td><kbd>/</kbd></td><td data-i18n="kb_search">Search</td></tr>
+              <tr><td><kbd>t</kbd></td><td data-i18n="kb_theme">Switch theme</td></tr>
+              <tr><td><kbd>?</kbd></td><td data-i18n="kb_help">Help</td></tr>
+              <tr><td><kbd>q</kbd></td><td data-i18n="kb_quit">Quit</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2 data-i18n="cta_title">Manage SSH — without ever leaving the terminal</h2>
+        <p data-i18n="cta_desc">Groups, encrypted credentials, instant search, beautiful themes — all in a single TUI. Built with Rust for speed. One command to install, one keypress to connect.</p>
+        <div class="cta-actions">
+          <a href="#quickstart" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="cta_install">Get Started</span>
+          </a>
+          <a href="https://github.com/wormhole-ssh/wormhole" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span data-i18n="cta_star">Star on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-left">
+        <img src="assets/logo.png" alt="Wormhole" />
+        <span data-i18n="footer_copy">&copy; 2025 Wormhole Contributors. Released under the MIT License.</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/wormhole-ssh/wormhole" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/wormhole-ssh/wormhole/blob/master/LICENSE" target="_blank" rel="noopener" data-i18n="footer_license">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
