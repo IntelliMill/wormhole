@@ -6,12 +6,17 @@ pub enum Lang {
 }
 
 impl Lang {
-        /// Parse a language code string, defaulting to Chinese.
-        pub fn from_str(s: &str) -> Self {
+    /// Parse a language code string, defaulting to Chinese.
+    pub fn from_str(s: &str) -> Self {
         match s {
             "en" => Lang::En,
             _ => Lang::Zh,
         }
+    }
+
+    /// Unicode flag emoji for this language.
+    pub fn flag(&self) -> &'static str {
+        crate::ui::icons::lang_flag(*self)
     }
 }
 
@@ -34,6 +39,7 @@ macro_rules! build_translations {
 
 build_translations! {
     "app.title" => { zh: "Wormhole", en: "Wormhole" },
+    "app.host_count" => { zh: "{} 台主机", en: "{} hosts" },
     "password.unlock" => { zh: "解锁 Wormhole", en: "Unlock Wormhole" },
     "password.enter" => { zh: "输入主密码", en: "Enter master password" },
     "password.set" => { zh: "设置主密码", en: "Set Master Password" },

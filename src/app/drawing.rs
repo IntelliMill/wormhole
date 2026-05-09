@@ -109,7 +109,7 @@ impl App {
                     .add_modifier(Modifier::BOLD),
             ),
             Span::styled(
-                format!("{}台主机", host_count),
+                format!(" {}", i18n::tr("app.host_count").replace("{}", &host_count.to_string())),
                 Style::default().fg(t.muted),
             ),
         ]))
@@ -216,6 +216,13 @@ impl App {
             format!("  {}", i18n::tr("password.confirm_btn")),
             Style::default().fg(t.muted),
         )));
+        {
+            let cur = i18n::current_lang();
+            lines.push(Line::from(vec![
+                Span::styled("  [L] ", Style::default().fg(t.muted)),
+                Span::styled(cur.flag().to_string(), Style::default()),
+            ]));
+        }
 
         let block = Block::default()
             .borders(Borders::ALL)

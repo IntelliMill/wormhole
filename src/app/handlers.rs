@@ -213,6 +213,7 @@ impl App {
     }
 
     fn handle_password_input(&mut self, key: KeyEvent) {
+        if key.code == KeyCode::Char('L') { self.cycle_language(); return; }
         match key.code {
             KeyCode::Enter => {
                 if let Some(ref hash) = self.config.master_password_hash {
@@ -257,6 +258,7 @@ impl App {
     }
 
     fn handle_set_master_password(&mut self, key: KeyEvent) {
+        if key.code == KeyCode::Char('L') { self.cycle_language(); return; }
         match key.code {
             KeyCode::Enter => {
                 if self.password_input.len() < 6 {
@@ -283,6 +285,7 @@ impl App {
     }
 
     fn handle_set_master_password_confirm(&mut self, key: KeyEvent) {
+        if key.code == KeyCode::Char('L') { self.cycle_language(); return; }
         match key.code {
             KeyCode::Enter => {
                 if self.password_input == self.first_password {
@@ -681,5 +684,19 @@ impl App {
             }
             _ => {}
         }
+    }
+}
+
+impl App {
+    /// Cycle language on password screens. Returns true if handled.
+    fn cycle_language(&mut self) -> bool {
+        let langs = i18n::all_langs();
+        let cur = i18n::current_lang();
+        let idx = langs.iter().position(|(l, _)| *l == cur).unwrap_or(0);
+        let next_idx = (idx + 1) % langs.len();
+        let (next_lang, _) = langs[next_idx];
+        i18n::set_lang(next_lang);
+        self.config.settings.lang = i18n::lang_code(next_lang).to_string();
+        true
     }
 }
